@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Characters - Bağlantı Yok</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+
+      .animate-pulse-slow {
+        animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .wifi-icon {
+        width: 60px;
+        height: 60px;
+        position: relative;
+        margin: 0 auto 2rem;
+      }
+
+      .wifi-icon::before {
+        content: '';
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: #ef4444;
+        border-radius: 50%;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .wifi-icon::after {
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border: 3px solid #ef4444;
+        border-bottom: none;
+        border-radius: 30px 30px 0 0;
+        bottom: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0.3;
+      }
+
+      .connection-dots {
+        display: flex;
+        justify-content: center;
+        gap: 4px;
+        margin: 1rem 0;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ef4444;
+        animation: pulse 1.5s ease-in-out infinite;
+      }
+
+      .dot:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+
+      .dot:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+    </style>
+  </head>
+  <body class="gradient-bg min-h-screen flex items-center justify-center p-4">
+    <div
+      class="glass-effect rounded-2xl p-8 max-w-md w-full text-center shadow-2xl animate-float"
+    >
+      <!-- WiFi Icon -->
+      <div class="wifi-icon animate-pulse-slow"></div>
+
+      <!-- Main Content -->
+      <div class="text-white">
+        <h1 class="text-2xl lg:text-3xl font-bold mb-4 text-white">
+          İnternet Bağlantısı Yok!
+        </h1>
+
+        <p class="text-gray-200 text-base mb-6 leading-relaxed">
+          Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.
+        </p>
+
+        <!-- Connection Status -->
+        <div class="connection-dots">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+
+        <!-- Retry Button -->
+        <button
+          onclick="window.location.reload()"
+          class="mt-6 bg-white text-indigo-600 font-semibold py-3 px-6 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg"
+        >
+          🔄 Yeniden Dene
+        </button>
+
+        <!-- Additional Info -->
+        <div class="mt-8 text-sm text-gray-300">
+          <p class="mb-2">Yaşayabileceğiniz sorunlar:</p>
+          <ul class="text-left space-y-1 text-xs">
+            <li>• WiFi bağlantısı kesilmiş olabilir</li>
+            <li>• Mobil veri sınırı aşılmış olabilir</li>
+            <li>• Ağ sağlayıcısında bir sorun olabilir</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Background Animation -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+      <div
+        class="absolute -top-4 -right-4 w-72 h-72 bg-white opacity-5 rounded-full animate-pulse"
+      ></div>
+      <div
+        class="absolute -bottom-8 -left-8 w-96 h-96 bg-white opacity-5 rounded-full animate-pulse"
+        style="animation-delay: 2s"
+      ></div>
+    </div>
+  </body>
+</html>
